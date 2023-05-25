@@ -1,13 +1,17 @@
 <Window
+    CanResize="False"
     Icon="/Assets/avalonia-logo.ico"
+    RequestedThemeVariant="Light"
     Title="FuncDataTemplateSample"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="200"
+    d:DesignWidth="300"
     mc:Ignorable="d"
     x:Class="FuncDataTemplateSample.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dataTemplates="clr-namespace:FuncDataTemplateSample.DataTemplates"
+    xmlns:m="using:FuncDataTemplateSample.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:FuncDataTemplateSample.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -16,6 +20,18 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-
-
+    <ListBox ItemsSource="{Binding People}">
+        <ListBox.ItemTemplate>
+            <DataTemplate DataType="m:Person">
+                <Grid ColumnDefinitions="Auto, *">
+                    <ContentControl Content="{Binding}" ContentTemplate="{x:Static dataTemplates:DataTemplateProvider.GenderDataTemplate}" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="10,0"
+                        Text="{Binding}"
+                        VerticalAlignment="Center" />
+                </Grid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </Window>
