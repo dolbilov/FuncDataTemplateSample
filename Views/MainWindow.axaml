@@ -1,8 +1,10 @@
 <Window
     CanResize="False"
+    Height="200"
     Icon="/Assets/avalonia-logo.ico"
     RequestedThemeVariant="Light"
     Title="FuncDataTemplateSample"
+    Width="300"
     d:DesignHeight="200"
     d:DesignWidth="300"
     mc:Ignorable="d"
